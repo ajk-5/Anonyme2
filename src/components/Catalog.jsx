@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import FilterBar from "./FilterBar";
 import ProjectCard from "./ProjectCard";
@@ -149,6 +149,14 @@ export default function Catalog({ url, type, titre, id }) {
           <p>
             <strong>Technologies :</strong> {sel.techs.join(", ")}
           </p>
+          {type === "courses" && (
+  <Link
+    to={`/inscription?cours=${encodeURIComponent(sel.id)}`}
+    className="btn btn-primary w-100"
+  >
+    S'inscrire à cette formation
+  </Link>
+)}
         </Modal>
       )}
 
