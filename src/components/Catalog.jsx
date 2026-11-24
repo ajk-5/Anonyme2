@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Details from "./Details";
 import SearchBar from "./SearchBar";
 import FilterBar from "./FilterBar";
 import ProjectCard from "./ProjectCard";
@@ -126,40 +126,13 @@ export default function Catalog({ url, type, titre, id }) {
       )}
 
       {sel && (
-        <Modal
-          titre={sel.titre}
-          onClose={() => setSel(null)}
-        >
-          {sel.img && (
-            <img
-              src={sel.img}
-              alt={sel.titre}
-              className="img-fluid rounded mb-3"
-            />
-          )}
-
-          <p>{sel.desc}</p>
-
-          <p><strong>Catégorie :</strong> {sel.cat}</p>
-
-          {sel.niveau && (
-            <p><strong>Niveau :</strong> {sel.niveau}</p>
-          )}
-
-          <p>
-            <strong>Technologies :</strong> {sel.techs.join(", ")}
-          </p>
-
-          {type === "courses" && (
-            <Link
-              to={`/inscription?cours=${encodeURIComponent(sel.id)}`}
-              className="btn btn-primary w-100"
-            >
-              S'inscrire à cette formation
-            </Link>
-          )}
-        </Modal>
-      )}
+  <Modal
+    titre={sel.titre}
+    onClose={() => setSel(null)}
+  >
+    <Details item={sel} type={type} />
+  </Modal>
+)}
 
     </section>
   );
