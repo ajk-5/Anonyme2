@@ -19,3 +19,14 @@
     animation: none;
   }
 }
+dialog.modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: min(600px, 90%);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}

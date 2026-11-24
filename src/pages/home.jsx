@@ -1,47 +1,51 @@
-import useFetch from "../hooks/UseFetch";
-import { API } from "../config/api";
+import Hero from "../components/Hero";
+import Loader from "../components/Loader";
+import useFetch from "../hooks/useFetch";
+import { API_URLS } from "../config/api";
 
 export default function Home() {
-  const proj = useFetch(API.projects);
-  const cours = useFetch(API.courses);
+  const proj = useFetch(API_URLS.projects);
+  const cours = useFetch(API_URLS.courses);
 
   return (
-    <main className="container py-5">
-      <h1 className="text-center mb-5">
-        WebCraft Solutions
-      </h1>
+    <>
+      <Hero />
 
-      <section className="mb-5">
-        <h2>Nos projets</h2>
+      <div className="container py-5">
 
-        {proj.load && <p>Chargement...</p>}
+        <section id="projets" className="mb-5">
+          <h2 className="mb-4">Nos projets</h2>
 
-        {proj.err && (
-          <div className="alert alert-danger">
-            {proj.err}
-          </div>
-        )}
+          {proj.load && <Loader />}
 
-        {proj.data && (
-          <pre>{JSON.stringify(proj.data, null, 2)}</pre>
-        )}
-      </section>
+          {proj.err && (
+            <div className="alert alert-danger">
+              {proj.err}
+            </div>
+          )}
 
-      <section className="mb-5">
-        <h2>Nos formations</h2>
+          {proj.data && (
+            <pre>{JSON.stringify(proj.data, null, 2)}</pre>
+          )}
+        </section>
 
-        {cours.load && <p>Chargement...</p>}
+        <section id="formations" className="mb-5">
+          <h2 className="mb-4">Nos formations</h2>
 
-        {cours.err && (
-          <div className="alert alert-danger">
-            {cours.err}
-          </div>
-        )}
+          {cours.load && <Loader />}
 
-        {cours.data && (
-          <pre>{JSON.stringify(cours.data, null, 2)}</pre>
-        )}
-      </section>
-    </main>
+          {cours.err && (
+            <div className="alert alert-danger">
+              {cours.err}
+            </div>
+          )}
+
+          {cours.data && (
+            <pre>{JSON.stringify(cours.data, null, 2)}</pre>
+          )}
+        </section>
+
+      </div>
+    </>
   );
 }
