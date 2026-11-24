@@ -25,7 +25,7 @@ export default function Modal({ titre, children, onClose }) {
     >
       <div className="modal-content rounded-0 border-0">
 
-        <div className="modal-header p-4">
+        <div className="modal-header px-4 py-3">
           <h4 className="modal-title">{titre}</h4>
 
           <button
@@ -36,11 +36,11 @@ export default function Modal({ titre, children, onClose }) {
           />
         </div>
 
-        <div className="modal-body p-4">
+        <div className="modal-body p-3 p-md-4">
           {children}
         </div>
 
-        <div className="modal-footer px-4 py-3">
+        <div className="modal-footer px-4 py-2">
           <button
             type="button"
             className="btn btn-outline-primary px-4"

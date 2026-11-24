@@ -175,26 +175,30 @@
 .form-select.is-invalid {
   border-color: var(--bs-danger);
 }
-/* Fenêtre modale */
+/* Modale */
 
 dialog.modal-luxe {
   position: fixed;
+  inset: 0;
   margin: auto;
-  width: min(700px, 92%);
-  max-height: 90vh;
+  width: 94%;
+  max-width: 950px;
+  max-height: 92dvh;
   background: var(--ivoire);
   outline: 1px solid var(--or);
-  overflow: auto;
+  overflow: hidden;
 }
 
 .modal-luxe .modal-content {
   background: var(--ivoire);
+  max-height: 92dvh;
 }
 
 .modal-luxe .modal-header {
   background: var(--noir);
   color: var(--or-clair);
   border-bottom: 2px solid var(--or);
+  flex-shrink: 0;
 }
 
 .modal-luxe .modal-title {
@@ -202,20 +206,32 @@ dialog.modal-luxe {
   font-weight: 400;
 }
 
-.modal-luxe .modal-footer {
-  border-top: 1px solid #d6cfc1;
-  background: var(--ivoire);
+.modal-luxe .modal-body {
+  overflow-y: auto;
+  min-height: 0;
 }
 
-.modal-luxe hr {
-  border-color: #c7a97b;
-  opacity: 0.5;
+.modal-luxe .modal-footer {
+  background: var(--ivoire);
+  border-top: 1px solid #d6cfc1;
+  flex-shrink: 0;
 }
+
+/* Image */
+
+.detail-img {
+  max-height: 320px;
+  object-fit: contain;
+}
+
+/* Arrière-plan */
 
 dialog.modal-luxe::backdrop {
   background: #101110b3;
   backdrop-filter: blur(6px);
 }
+
+/* Animation */
 
 dialog.modal-luxe[open] {
   animation: ouverture 0.25s ease-out;
@@ -224,12 +240,24 @@ dialog.modal-luxe[open] {
 @keyframes ouverture {
   from {
     opacity: 0;
-    transform: translateY(15px) scale(0.98);
+    transform: translateY(10px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .detail-img {
+    max-height: 160px;
+  }
+
+  .modal-luxe .modal-title {
+    font-size: 1.2rem;
   }
 }
 
