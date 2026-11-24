@@ -1,5 +1,5 @@
-/*
-Récupère le nom d'une valeur ou d'un objet.
+/**
+*Récupère le nom d'une valeur ou d'un objet.
  */
 export function getNom(val) {
   if (val == null) return "";
@@ -11,8 +11,8 @@ export function getNom(val) {
   return String(val);
 }
 
-/*
-  Retrouve le nom correspondant à un identifiant.
+/**
+ * Retrouve le nom correspondant à un identifiant.
  */
 function getLabel(val, liste = []) {
   const id = String(val?.id ?? val ?? "");
@@ -25,8 +25,8 @@ function getLabel(val, liste = []) {
   return getNom(opt ?? val);
 }
 
-/*
- Prépare les données pour les cartes.
+/** 
+ *Prépare les données pour les cartes.
  */
 export function formatItem(item, data) {
   return {
@@ -44,8 +44,8 @@ export function formatItem(item, data) {
   };
 }
 
-/*
-Prépare les options des filtres.
+/**
+ * Prépare les options des filtres.
  */
 export function getOptions(liste = []) {
   return [...new Set(liste.map(getNom).filter(Boolean))]
