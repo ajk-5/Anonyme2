@@ -175,22 +175,69 @@
 .form-select.is-invalid {
   border-color: var(--bs-danger);
 }
+/* Fenêtre modale */
 
-/* Modales */
-
-dialog.modal-dialog {
+dialog.modal-luxe {
   position: fixed;
   margin: auto;
-  width: min(650px, 90%);
+  width: min(700px, 92%);
   max-height: 90vh;
+  background: var(--ivoire);
+  outline: 1px solid var(--or);
   overflow: auto;
 }
 
-dialog::backdrop {
+.modal-luxe .modal-content {
+  background: var(--ivoire);
+}
+
+.modal-luxe .modal-header {
+  background: var(--noir);
+  color: var(--or-clair);
+  border-bottom: 2px solid var(--or);
+}
+
+.modal-luxe .modal-title {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.modal-luxe .modal-footer {
+  border-top: 1px solid #d6cfc1;
+  background: var(--ivoire);
+}
+
+.modal-luxe hr {
+  border-color: #c7a97b;
+  opacity: 0.5;
+}
+
+dialog.modal-luxe::backdrop {
   background: #101110b3;
   backdrop-filter: blur(6px);
 }
 
+dialog.modal-luxe[open] {
+  animation: ouverture 0.25s ease-out;
+}
+
+@keyframes ouverture {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.modal-luxe[open] {
+    animation: none;
+  }
+}
 /* Responsive */
 
 @media (max-width: 576px) {
