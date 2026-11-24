@@ -126,13 +126,13 @@ export default function Catalog({ url, type, titre, id }) {
       )}
 
       {sel && (
-  <Modal
-    titre={sel.titre}
-    onClose={() => setSel(null)}
-  >
-    <Details item={sel} type={type} />
-  </Modal>
-)}
+        <Modal
+          titre={sel.titre}
+          onClose={() => setSel(null)}
+        >
+          <Details item={sel} type={type} />
+        </Modal>
+      )}
 
     </section>
   );
