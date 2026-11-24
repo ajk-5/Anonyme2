@@ -149,14 +149,15 @@ export default function Catalog({ url, type, titre, id }) {
           <p>
             <strong>Technologies :</strong> {sel.techs.join(", ")}
           </p>
+
           {type === "courses" && (
-  <Link
-    to={`/inscription?cours=${encodeURIComponent(sel.id)}`}
-    className="btn btn-primary w-100"
-  >
-    S'inscrire à cette formation
-  </Link>
-)}
+            <Link
+              to={`/inscription?cours=${encodeURIComponent(sel.id)}`}
+              className="btn btn-primary w-100"
+            >
+              S'inscrire à cette formation
+            </Link>
+          )}
         </Modal>
       )}
 
