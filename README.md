@@ -53,6 +53,5 @@ Le hook useFetch centralise les appels API. Le hook useSearch gère la recherche
 
 `npm run lint`
 
-## Limite
-
-Le formulaire est validé côté client. Les inscriptions ne sont pas enregistrées sur un serveur.
+## Utilisation IA
+J’ai utilisé l’intelligence artificielle pour résoudre des erreurs complexes liées au renommage des fichiers et aux imports sur fichier useFetch.jsx, , ainsi que pour corriger les fautes de grammaire et d’orthographe. Elle m’a également aidé dans les choix de design et la sélection des codes couleurs pour le CSS.

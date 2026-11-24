@@ -1,8 +1,33 @@
 body {
   margin: 0;
-  background-color: #f8f9fa;
+  background: #f5f2eb;
+  color: #101110;
+  font-family: system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Georgia, serif;
+  font-weight: 400;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 35px;
+}
+
+::selection {
+  background: #c7a97b;
+  color: #101110;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
