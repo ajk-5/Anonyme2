@@ -1,49 +1,45 @@
 import { useState, useEffect } from "react";
 
 export default function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [load, setLoad] = useState(true);
-  const [err, setErr] = useState(null);
+  const [res, setRes] = useState(null);
 
   useEffect(() => {
     const ctrl = new AbortController();
 
-    setLoad(true);
-    setErr(null);
-    setData(null);
-
     // On récupère les données de l'API
     async function getData() {
       try {
-        const res = await fetch(url, {
+        const req = await fetch(url, {
           signal: ctrl.signal
         });
 
-        if (!res.ok) {
-          throw new Error("Erreur HTTP : " + res.status);
+        if (!req.ok) {
+          throw new Error("Erreur HTTP : " + req.status);
         }
 
-        const json = await res.json();
+        const data = await req.json();
 
         if (!ctrl.signal.aborted) {
-          setData(json);
+          setRes({ url, data, err: null });
         }
       } catch (e) {
         if (!ctrl.signal.aborted) {
-          setErr(e.message);
-        }
-      } finally {
-        if (!ctrl.signal.aborted) {
-          setLoad(false);
+          setRes({ url, data: null, err: e.message });
         }
       }
     }
 
     getData();
 
-    // On annule la requête si le composant est démonté
+    // On annule la requête si nécessaire
     return () => ctrl.abort();
   }, [url]);
 
-  return { data, load, err };
+  const load = res?.url !== url;
+
+  return {
+    data: load ? null : res.data,
+    err: load ? null : res.err,
+    load
+  };
 }
