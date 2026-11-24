@@ -1,5 +1,12 @@
 import { useEffect, useRef } from "react";
 
+/**
+ * Fenêtre modale réutilisable.
+ * @param {object} props
+ * @param {string} props.titre
+ * @param {import("react").ReactNode} props.children
+ * @param {() => void} props.onClose
+ */
 export default function Modal({ titre, children, onClose }) {
   const ref = useRef(null);
 
@@ -12,30 +19,31 @@ export default function Modal({ titre, children, onClose }) {
   return (
     <dialog
       ref={ref}
-      className="modal-dialog rounded border-0 shadow p-0"
+      className="modal-dialog modal-luxe border-0 p-0 shadow-lg"
       aria-label={titre}
       onClose={onClose}
     >
-      <div className="modal-content">
+      <div className="modal-content rounded-0 border-0">
 
-        <div className="modal-header p-3">
-          <h5 className="modal-title">{titre}</h5>
+        <div className="modal-header px-4 py-3">
+          <h4 className="modal-title">{titre}</h4>
 
           <button
             type="button"
-            className="btn-close"
+            className="btn-close btn-close-white"
             aria-label="Fermer"
             onClick={() => ref.current.close()}
           />
         </div>
 
-        <div className="modal-body p-3">
+        <div className="modal-body p-3 p-md-4">
           {children}
         </div>
 
-        <div className="modal-footer p-3">
+        <div className="modal-footer px-4 py-2">
           <button
-            className="btn btn-secondary"
+            type="button"
+            className="btn btn-outline-primary px-4"
             onClick={() => ref.current.close()}
           >
             Fermer
